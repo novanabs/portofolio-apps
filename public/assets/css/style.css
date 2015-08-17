@@ -1,0 +1,16 @@
+html,body{height:100%;}
+.carousel,.item,.active{height:100%;}
+.carousel-inner{height:100%;}
+
+.navbar {
+    margin-bottom: 0;
+}
+.carousel {
+        background: url(http://placehold.it/620x420/ff9900);
+        position: relative;
+        padding: 10px;     /* Shows as a border around the carousel */
+  }
+  .navbar-inner{
+	margin-bottom:-90px;
+
+  }

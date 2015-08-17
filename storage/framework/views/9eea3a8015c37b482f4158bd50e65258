@@ -1,0 +1,16 @@
+<?php $__env->startSection('content'); ?>
+<img src="<?php echo asset($profile->photo); ?>" class="img-rounded" style="height:100px;width:80px;">
+
+<h2><?php echo $profile->full_name; ?></h2>
+<h4><?php echo $profile->birthplace.','.$profile->birthday; ?></h4>
+<h4><?php echo $profile->domisili; ?></h4>
+<h4><?php echo $profile->full_name; ?></h4>
+<h4><?php echo $profile->gender; ?></h4>
+<h4><?php echo $profile->religion; ?></h4>
+<h4><?php echo $profile->status; ?></h4>
+<h4><?php echo $profile->occupation; ?></h4>
+<h4><?php echo $profile->phone_number; ?></h4>
+<h4><?php echo $profile->users->email; ?></h4>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

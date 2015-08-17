@@ -1,0 +1,29 @@
+<?php $__env->startSection('title'); ?> <?php echo $article->title; ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+<?php echo HTML::style('assets/css/star.css'); ?>
+
+<?php echo HTML::style('fonts/font-awesome.min.css'); ?>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="container">
+ <div class="row">
+  <div class="col-md-4" style="height:400px;background-color:white;">
+   </div>
+
+   <div class="col-md-8">
+      <div class="thumbnail">
+        <h3 class="page-header text-center"><?php echo $article->title; ?></h3>
+        <div class="caption">
+          <p>posted on <?php echo $article->updated_at->format('D,m M Y'); ?> by <a href="<?php echo url('user/'.$article->users->name); ?>"><?php echo $article->users->name; ?></a></p>
+          <br>
+          <p><?php echo $article->content; ?></p>
+        </div>
+      </div>
+    <div>
+</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

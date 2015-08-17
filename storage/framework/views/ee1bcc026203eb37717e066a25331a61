@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title></title>
+	<?php echo HTML::style('assets/css/bootstrap.css'); ?>
+
+</head>
+<body>
+<div class="container">;
+		<h1>input interview</h1>
+		<?php echo Form::open(['route' => 'interview.store']); ?>
+
+		
+		<div class="form-group">
+			<?php echo Form::label('candidate_id','candidate id'); ?>
+
+			<?php echo Form::text('candidate_id',$candidate->id,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('leadership','leadership'); ?>
+
+			<?php echo Form::text('leadership',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('solidarity','solidarity'); ?>
+
+			<?php echo Form::text('solidarity',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('seriousness','seriousness'); ?>
+
+			<?php echo Form::text('seriousness',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('personality','personality'); ?>
+
+			<?php echo Form::text('personality',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('problem_solving','problem Solving'); ?>
+
+			<?php echo Form::text('problem_solving',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('finance','finance'); ?>
+
+			<?php echo Form::text('finance',null,['class' => 'form-control']); ?>
+
+		</div>
+
+		<div class="form-group">
+			<?php echo Form::submit('input',['class' => 'btn btn-primary']); ?>
+
+		</div>
+		
+		<?php echo Form::close(); ?>	
+</div>
+</body>
+</html>
+		

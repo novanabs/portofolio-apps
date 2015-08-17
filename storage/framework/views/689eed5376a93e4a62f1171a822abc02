@@ -1,0 +1,98 @@
+<?php $__env->startSection('title','aplikasi Portofolio UMM'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="col-md-12" style=" background-color; margin-bottom:20px;">
+  <div class="container" >
+    <div class="row">
+    <div class="col-md-12 text-center">
+      <h3>Apps of the Month!</h3>
+    </div>
+       <div class="col-md-4">
+          <div class="thumbnail text-center" style="background-color:#F5AB35; height:300px; padding:105px;">
+
+            <h1>404</h1>
+          </div>
+       </div>
+       <div class="col-md-4" >
+          <div class="thumbnail text-center" style="background-color:#F5AB35; height:300px; padding:105px;">
+             <h1>404</h1>
+          </div>
+       </div>
+       <div class="col-md-4" >
+          <div class="thumbnail text-center" style="background-color:#F5AB35; height:300px; padding:105px;">
+             <h1>404</h1>
+          </div>
+       </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">   
+    <div class="col-md-3">
+      <?php foreach($article as $article): ?>
+      <div class="thumbnail text-justify" style="padding:20px;">
+       <h4 class="text-center"><?php echo $article->title; ?></h4>
+       <hr>
+       <h6><?php echo $article->updated_at->format('D,m M Y'); ?></h6>
+       <p style="text-align:justify;"><?php echo str_limit($article->content,200,'...'); ?><a  href="<?php echo route('user.article.show',$article->slug); ?>"><button class="btn btn-primary">Read More</button></a></p>
+     </div>
+     <?php endforeach; ?>
+     <h3>Article Category</h3>
+     <?php foreach($ArticleCategory as $category): ?>
+    <a href="<?php echo route('ArticleCategories.show',$category->name); ?>"><h3><span class="label label-success"><?php echo $category->name; ?></span></h3></a>
+     <?php endforeach; ?>
+
+     <h3>App Category</h3>
+     <?php foreach($AppCategory as $category): ?>
+     <a href="<?php echo route('AppCategories.show',$category->name); ?>"><h3><span class="label label-success"><?php echo $category->name; ?></span></h3></a>
+     <?php endforeach; ?>
+
+      
+   </div>
+
+
+
+   <div class="col-md-9">
+    <div class="col-md-12">
+      <h3>Communication APPs</h3>
+      <p>Recommended for you</p>
+    </div>
+    <div class="rows">
+      <?php foreach($app as $item): ?>
+      <div class="col-md-2" style=" background-color:white; padding:10px; margin:10px;">
+          <a href="<?php echo route('user.app.show',$item->slug); ?>">
+          <img src="<?php echo asset($item->photo); ?>" style=" width:100%; height:105px; margin-bottom:17px;" class="img-thumbnail ">      
+          </a>
+          <a href="<?php echo route('user.app.show',$item->slug); ?>"><h4><?php echo $item->name; ?></h4></a>
+          <p><small><?php echo $item->users->name; ?></small></p>
+          
+          <p class="pull-left">
+              <?php if($item->rating_cache != 0): ?>
+                <?php for($i=0;$i<$item->rating_cache;$i++): ?>
+                  <i class="fa fa-star"></i>
+                <?php endfor; ?>
+                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-o"></i>
+              <?php else: ?>
+                <p>No rating</p>
+              <?php endif; ?>
+            </p>
+            <p class="pull-right"><?php echo $item->rating_count; ?> <i class="fa fa-male"></i></p>
+          
+      </div>
+      <?php endforeach; ?>
+    </div>
+    <div class="col-md-12 text-center">
+      <?php echo $app->render(); ?>
+
+    </div>
+    <div class="col-md-12 text-center">
+    </div>  
+    
+  </div>
+</div>
+
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('partial.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

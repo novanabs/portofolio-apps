@@ -1,0 +1,15 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="container">
+	<article>
+		<h2><?php echo ($article->title); ?></h2>
+		<h4><?php echo nl2br($article->body); ?></h4>
+		
+	</article>
+	
+	<?php echo link_to_route('article_index','go back to articles feed');; ?>
+
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._dasboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

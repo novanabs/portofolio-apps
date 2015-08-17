@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title></title>
+	<?php echo HTML::style('assets/css/bootstrap.css'); ?>
+
+</head>
+<body>
+	<div class="container">
+		<h3><a href="<?php echo e(route('candidate.create')); ?>">add Candidate</a></h3>
+	
+		<table class="table table-stripped">
+			<thead>
+				<td>id</td>
+				<td>NIM</td>
+				<td>Nama</td>
+				<td>TTL</td>
+				<td>Fakultas</td>
+				<td>Jurusan</td>
+				<td>Alamat Malang</td>
+				<td>Alamat Asal</td>
+				<td>Action</td>
+			</thead>
+
+			<?php foreach($candidates as $candidate): ?>
+			<tr>
+				<td><?php echo $candidate->id; ?></td>
+				<td><?php echo $candidate->NIM; ?></td>
+				<td><?php echo $candidate->name; ?></td>
+				<td><?php echo $candidate->birthplace.','.$candidate->birthday; ?></td>
+				<td><?php echo $candidate->faculty; ?></td>
+				<td><?php echo $candidate->department; ?></td>
+				<td><?php echo $candidate->malang_address; ?></td>
+				<td><?php echo $candidate->origin_address; ?></td>
+				<td>
+					<a class="btn btn-primary"href="<?php echo route('candidate.store',$candidate->id); ?>">add</a>
+					<?php echo Form::open(['route'=>['one2one.destroy', $candidate->id],'method' => 'DELETE']); ?>
+
+  				        <?php echo Form::submit('Delete', ['class' => 'btn btn-danger']); ?>
+
+             			<?php echo Form::close(); ?>
+
+				</td> 	
+				</tr>
+			<?php endforeach; ?>
+		</table>
+		<br><br>
+	</div>
+</body>
+</html>

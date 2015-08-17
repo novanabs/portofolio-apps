@@ -1,0 +1,15 @@
+
+
+<?php $__env->startSection('content'); ?>
+	<h2>Create New Article</h2>
+<div class="col-md-4">
+	<?php echo Form::open(['route' => 'tag.store']); ?>
+
+
+		<?php echo $__env->make('partial._formTag',['submitButtonText' =>'Add'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	<?php echo Form::close(); ?>	
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._dasboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

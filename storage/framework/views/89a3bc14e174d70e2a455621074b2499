@@ -1,0 +1,60 @@
+ 
+ <?php $__env->stopSection(); ?>
+ <?php $__env->startSection('content'); ?>
+ <div class="rows">
+        <div class="col-md-12" style="height:110px;">
+          <div class="md-4" style="height:105px; width:95px; position:absolute; background-image:url(<?php echo e(URL('uploads/user.png')); ?>); background-size:95px 105px;">
+          </div>
+        </div>
+        <div class="col-md-12" style="height:90px; background-color:#2EB8E6;">
+          <a href="<?php echo route('profile.show',$user->id); ?>"><button class="btn btn-success" style="margin:30px 0 0 13px;">
+          profile</button></a>
+          <?php if($cek==1): ?>
+          <a href="<?php echo route('user.app.create'); ?>"><button class="btn btn-success" style="margin:30px 0 0 13px;">
+          Upload App</button></a>
+          <?php endif; ?>
+        </div>
+  </div>
+ <div class="col-md-12">
+  <div class="rows">
+      
+      <?php if($check === true): ?>
+      <div class="col-md-12" style="text-align:center;">
+        <h3> Still Empty</h3> 
+         
+      </div>
+      <?php else: ?>
+      <div class="col-md-3" style="margin-top:10px;">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title">New App</h4>
+          </div>
+          <div class="panel-body" style="height:210px;">
+              
+              <a href="<?php echo url('create/user/app'); ?>"><h2>Add New App</a></h2>
+
+          </div>
+        </div>
+      </div>
+      <?php foreach($users as $user): ?>
+      <div class="col-md-3" style="margin-top:10px;">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title"><?php echo e($user->name); ?></h4>
+          </div>
+          <div class="panel-body">
+            <p><b>Category </b>   : <?php echo e($user->category); ?></p>
+            <p><b>platform</b>    : <?php echo e($user->platform); ?></p>
+            <p><b>Version</b>     : <?php echo e($user->version); ?></p>
+            <p><b>Email</b>       : <?php echo e($user->email); ?></p>
+            <p><b>Description</b> : <br><?php echo e($user->description); ?></p>
+           
+          </div>
+        </div>
+      </div>
+      <?php endforeach; ?>
+      <?php endif; ?>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('user._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

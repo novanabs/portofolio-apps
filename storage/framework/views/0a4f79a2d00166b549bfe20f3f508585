@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title><?php echo $__env->yieldContent('title'); ?></title>
+	<?php echo HTML::style('assets/css/bootstrap.css'); ?>
+
+	<?php echo HTML::style('fonts/font-awesome.min.css'); ?>
+
+	<link href='http://fonts.googleapis.com/css?family=Lato:300italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+	
+	.fa-star, .fa-star-o,.fa-male{
+		font-size: 10px;
+	}
+	small
+	{
+		font-family: 'Lato', serif; 
+
+	}
+	a{
+		color:black;
+	}
+	a:hover{
+		text-decoration: none;
+		font-color:black;
+	}
+	.label:hover{
+		opacity:0.6;
+	}
+	html{
+    height: auto;
+	}
+	body{
+    	height: auto;
+    	margin: 0;
+    	background-repeat: no-repeat;
+    	background-attachment: fixed;
+    	background: -webkit-linear-gradient(#f39c12,#e67e22); /* For Safari 5.1 to 6.0 */
+ 		background: -o-linear-gradient(#f39c12,#e67e22); /* For Opera 11.1 to 12.0 */
+  		background: -moz-linear-gradient(#f39c12,#e67e22); /* For Firefox 3.6 to 15 */
+  		background: linear-gradient(#f39c12,#e67e22); /* Standard syntax */
+		
+        
+	}
+
+	h4 { 
+		font-family: 'Roboto'; 
+		margin-top: 0; 
+		margin-bottom: 0; 
+	}
+	p{
+		margin-top: 0; 
+		margin-bottom: 0;
+	}
+
+	</style>
+	<link rel="shortcut icon" href="<?php echo URL('uploads/images/p.ico'); ?>">
+
+</head>
+<body>
+	<section>
+		<?php echo $__env->make('partial.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	</section>
+	<section>
+		<?php echo $__env->yieldContent('content'); ?>
+	</section>
+	<section>
+		<?php echo $__env->make('partial.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	</section>
+</body>
+<?php echo HTML::script('assets/js/jquery-2.1.4.min.js'); ?>
+
+<?php echo HTML::script('assets/js/bootstrap.js'); ?>
+
+<?php echo $__env->yieldContent('js'); ?>
+</html>

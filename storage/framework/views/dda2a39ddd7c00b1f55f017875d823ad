@@ -1,0 +1,49 @@
+
+<?php $__env->startSection('css'); ?>
+<?php echo HTML::style('assets\datatables\jquery.dataTables.css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<p><?php echo link_to_route('application.create','Create New application');; ?></p>
+
+	<table id="articles" class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>user id</th>
+						<th>name</th>
+						<th>description</th>
+						<th>category</th>
+						<th>platform</th>
+						<th>version</th>
+						<th>email</th>
+						<th colspan='3' style="color:red; text-align:center;">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $no = 1; ?>
+					<?php foreach($app as $app): ?>
+					<tr>
+						<td> <?php echo $no++;?> </td>	
+						<td> <?php echo e($app->user_id); ?> </td>
+						<td> <?php echo e($app->name); ?> </td>
+						<td> <?php echo e(substr($app->description,0,100)); ?> </td>
+						<td> <?php echo e($app->category); ?> </td>
+						<td> <?php echo e($app->platform); ?> </td>
+						<td> <?php echo e($app->version); ?> </td>
+						<td> <?php echo e($app->email); ?> </td>
+						<td><a href="<?php echo e(url('admin/application',$app->id)); ?>" class="btn btn-primary">View</a></td>
+             			<td><a href="<?php echo e(route('application.edit',$app->id)); ?>" class="btn btn-warning">Update</a></td> 
+						<td>
+						<?php echo Form::open(['route'=>['application.delete', $app->id],'method' => 'DELETE']); ?>
+
+  				        <?php echo Form::submit('Delete', ['class' => 'btn btn-danger']); ?>
+
+             			<?php echo Form::close(); ?></td>  
+							
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._dasboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

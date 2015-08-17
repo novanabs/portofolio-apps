@@ -1,0 +1,13 @@
+<div class="form-group  <?php echo e($errors->has('title') ? 'has-error' : ''); ?>">
+	<?php echo Form::label('Nama','Nama'); ?>
+
+	<?php echo Form::text('name',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('name', '<span class="help-block">:message</span>'); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::submit($submitButtonText,['class' => 'btn btn-primary']); ?>
+
+</div>

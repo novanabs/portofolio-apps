@@ -1,0 +1,71 @@
+<?php echo Form::hidden('user_id',Auth::user()->id); ?>
+
+
+<div class="form-group  <?php echo e($errors->has('photo') ? 'has-error' : ''); ?>">
+    <?php echo Form::label('photo','Photo'); ?>
+
+    <?php echo Form::file('photo',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('photo', '<span class="help-block">:message</span>'); ?>
+
+</div>
+
+<div class="form-group  <?php echo e($errors->has('name') ? 'has-error' : ''); ?>">
+	<?php echo Form::label('name','Name'); ?>
+
+	<?php echo Form::text('name',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('name', '<span class="help-block">:message</span>'); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('category','Category'); ?>
+
+    <?php echo Form::select('category',['Game' => 'Game','Tool' => 'Tool','Lifestyle' => 'Lifastyle','communication'=>'coomunication'], null, ['class' => 'form-control']); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('description','description'); ?>
+
+	<?php echo Form::textarea('description',null,['class' => 'form-control']); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('version','Version'); ?>
+
+	<?php echo Form::text('version',null,['class' => 'form-control']); ?>
+
+</div>
+
+<div class="form-group  <?php echo e($errors->has('email') ? 'has-error' : ''); ?>">
+	<?php echo Form::label('email','Email'); ?>
+
+	<?php echo Form::text('email',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('email', '<span class="help-block">:message</span>'); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('platform','Platform'); ?>
+
+	    <?php echo Form::select('platform',['android' => 'android','windows' => 'windows','iOS' => 'iOS','web-based'=>'web-based'], null, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group  <?php echo e($errors->has('application') ? 'has-error' : ''); ?>">
+    <?php echo Form::label('application','Upload File App'); ?>
+
+    <?php echo Form::file('application',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('application', '<span class="help-block">:message</span>'); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::submit($submitButtonText,['class' => 'btn btn-primary']); ?>
+
+</div>
+
+

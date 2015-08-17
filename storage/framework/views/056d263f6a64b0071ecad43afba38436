@@ -1,0 +1,32 @@
+
+
+<?php $__env->startSection('content'); ?>
+   <?php echo $__env->make('image.error-notification', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+   <?php echo Form::model($image,['url' => 'admin/image/'.$image->id, 'method' => 'PUT', 'files'=>true]); ?>
+
+
+      <img src="<?php echo e(asset($image->file)); ?>" height="150" />
+      <br><br>
+      <div class="form-group">
+         <label for="caption">Caption</label>
+         <?php echo Form::text('caption',null,['class'=>'form-control']); ?>
+
+      </div>
+
+      <div class="form-group">
+         <label for="description">Description</label>
+         <?php echo Form::textarea('description',null,['class'=>'form-control']); ?>
+
+      </div>
+      <div class="form-group">
+      <?php echo Form::file('userfile',null,['class'=>'form-control']); ?>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="<?php echo e(url('/image')); ?>" class="btn btn-warning">Cancel</a>
+
+   <?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._dasboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

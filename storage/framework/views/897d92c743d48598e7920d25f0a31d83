@@ -1,0 +1,51 @@
+<?php $__env->startSection('title'); ?> Apps Category <?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="height:400px; background-color:white;">
+
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <?php foreach($app as $item): ?>
+        <div class="col-md-4 col-sm-4">
+        <div class="thumbnail" style="background-color:wheat;">
+          <div class="bg-success text-center">
+            <img src="<?php echo asset($item->photo); ?>" style="height:220px;width:220px;margin-top:20px; margin-bottom:10px;" class="bg-success img-thumbnail img-circle">
+          </div>  
+          <div class="caption">
+            <?php foreach($item->AppCategories as $category): ?>
+              <small class="label label-warning"><a href="<?php echo route('AppCategories.show',$category->name); ?>"><?php echo $category->name; ?></a></small>
+            <?php endforeach; ?>
+            <a href="<?php echo route('user.app.show',$item->slug); ?>"><h3 class=""><?php echo $item->name; ?></h3></a>
+            <div class="bg-warning img-rounded" style="padding:10px;margin-bottom:5px;">
+              <p><?php echo str_limit($item->description,59,'.....'); ?></p>
+            </div>
+            <p><b>Platform : </b><?php echo $item->platform; ?></p>
+            <p><b>Develope by:</b> <a href="<?php echo url('user/'.$item->users->name); ?>"><?php echo $item->users->name; ?></a></p>
+            <p class="pull-left">
+              <?php if($item->rating_cache != 0): ?>
+                <?php for($i=0;$i<$item->rating_cache;$i++): ?>
+                  <i class="fa fa-star"></i>
+                <?php endfor; ?>
+              <?php else: ?>
+                <p>No rating</p>
+              <?php endif; ?>
+            </p>
+            <p class="pull-right"><?php echo $item->rating_count; ?> <i class="fa fa-male"></i></p>
+            <br><br>
+            <a href="<?php echo asset($item->application); ?>" target="_blank">
+            
+              <button class="btn btn-warning btn-block text-center">Download</button>
+
+            </a>
+          </div>
+        </div>
+      </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

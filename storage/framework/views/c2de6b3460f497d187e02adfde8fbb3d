@@ -1,0 +1,121 @@
+<?php $__env->startSection('title'); ?> App : <?php echo $app->name; ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+<?php echo HTML::style('assets/css/star.css'); ?>
+
+<?php echo HTML::style('fonts/font-awesome.min.css'); ?>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<!--====================================================  header ==================================================================-->
+  <div class="row" style="height:80px;">
+      <div class="col-md-12">
+        <a href="<?php echo route('profile.show',$user->id); ?>"><button class="btn btn-primary">Profile</button></a>
+        <?php if($url): ?>
+        <a href="<?php echo route('article.create'); ?>"><button class="btn btn-primary">Create Articles</button></a>
+        <a href="<?php echo route('user.app.create'); ?>"><button class="btn btn-primary">Upload App</button></a>
+        <a href="<?php echo route('profile.create'); ?>"><button class="btn btn-primary">Create Profile</button></a>
+        <?php endif; ?>
+
+      </div>
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+      <div class="col-md-12">
+        <div class="masthead">
+          <nav>
+            <ul class="nav nav-justified">
+              <?php if($url): ?>
+              <li><a href="#">Timeline</a></li>
+              <?php endif; ?>
+              <li><a href="<?php echo route('user.show',$app->users->name); ?>">Applications</a></li>
+              <li><a href="<?php echo route('user.article.index',$app->users->name); ?>">Article</a></li>
+              <?php if($url): ?>
+              <li><a href="#">Notification</a></li>
+              <?php endif; ?>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+<!--======================================================================================================================-->
+
+<div class="col-md-4">
+
+</div>
+<div class="col-md-8">
+	<div class="caption">
+		<img src="<?php echo asset($app->photo); ?>" class=" img-circle img-thumbnail">
+		<h2><?php echo $app->name; ?></h2>
+		<p>Version  : <?php echo $app->version; ?></p>
+		<p>Platform : <?php echo $app->platform; ?></p>
+		<p>Description : 
+			<?php echo $app->description; ?>
+
+		</p>
+		<p>email : <?php echo $app->email; ?></p>
+		<p class="pull-left">
+			<?php if($app->rating_cache != 0): ?>
+			<?php for($i=0;$i<$app->rating_cache;$i++): ?>
+			<i class="fa fa-star fa-2x"></i>
+			<?php endfor; ?>
+			<?php else: ?>
+			<p>No rating</p>
+			<?php endif; ?>
+		</p>
+		<p class="pull-right"><?php echo $app->rating_count; ?> <i class="fa fa-male"></i></p>
+		<br><br>
+	</div>
+</div>
+<div class="col-md-12">
+	<?php echo Form::open(['route'=>['review.store']]); ?>
+
+	<?php echo Form::hidden('application_id',$app->id); ?>
+
+	
+	<input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+	<label class="star star-5" for="star-5"></label>
+	<input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+	<label class="star star-4" for="star-4"></label>
+	<input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+	<label class="star star-3" for="star-3"></label>
+	<input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+	<label class="star star-2" for="star-2"></label>
+	<input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+	<label class="star star-1" for="star-1"></label>
+
+	<div class="form-group  <?php echo e($errors->has('comment') ? 'has-error' : ''); ?>">
+		<?php echo Form::label('comment','Submit Your Review!'); ?>
+
+		<?php echo Form::textarea('comment',null,['class' => 'form-control']); ?>
+
+		<?php echo $errors->first('comment', '<span class="help-block">:message</span>'); ?>
+
+	</div>
+
+	<div class="form-group">
+		<?php echo Form::submit('Submit',['class' => 'btn btn-primary']); ?>
+
+	</div>
+</div>
+<div class="col-md-12">
+	<h2>Review Apps</h2>
+	<?php foreach($review as $review): ?>
+	<?php if($review->rating !=0): ?>
+	<?php for($i=0;$i<$review->rating;$i++): ?>
+	<i class="fa fa-star"></i>
+	<?php endfor; ?>
+	<?php else: ?>
+	<p>No rating</p>
+	<?php endif; ?>
+	<p><?php echo e($review->users->name); ?></p>
+	<p><?php echo e($review->comment); ?></p>
+	<hr>
+	<?php endforeach; ?>
+</div>
+
+<?php echo Form::close(); ?>	
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

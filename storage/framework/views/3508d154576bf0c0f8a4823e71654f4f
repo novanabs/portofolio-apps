@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title></title>
+	<?php echo HTML::style('assets/css/bootstrap.css'); ?>
+
+</head>
+<body>
+<div class="container">
+		<h1>input vocal</h1>
+		<?php echo Form::open(['route' => 'one2one.store']); ?>
+
+		
+		<div class="form-group">
+			<?php echo Form::label('candidate id','candidate id'); ?>
+
+			<?php echo Form::text('candidate_id',$candidate->id,['class' => 'form-control']); ?>
+
+		</div>
+
+		<div class="form-group">
+			<?php echo Form::label('hearing','hearing'); ?>
+
+			<?php echo Form::text('hearing',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('sight_reading','sight reading'); ?>
+
+			<?php echo Form::text('sight_reading',null,['class' => 'form-control']); ?>
+
+		</div>
+
+		<div class="form-group">
+			<?php echo Form::submit('input',['class' => 'btn btn-primary']); ?>
+
+		</div>
+		
+		<?php echo Form::close(); ?>	
+</div>
+</body>
+</html>
+		

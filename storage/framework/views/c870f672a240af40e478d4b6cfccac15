@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title></title>
+	<?php echo HTML::style('assets/css/bootstrap.css'); ?>
+
+</head>
+<body>
+<div class="container">
+		<h1>input candidate</h1>
+		<?php echo Form::open(['route' => 'one2one.store']); ?>
+
+		
+		<div class="form-group">
+			<?php echo Form::label('NIM','NIM'); ?>
+
+			<?php echo Form::text('NIM',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('name','name'); ?>
+
+			<?php echo Form::text('name',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('birthplace','birthplace'); ?>
+
+			<?php echo Form::text('birthplace',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('birthday','birthday'); ?>
+
+			<?php echo Form::input('date','birthday',date('Y-m-d'),['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('faculty','faculty'); ?>
+
+			<?php echo Form::text('faculty',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('department','department'); ?>
+
+			<?php echo Form::text('department',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('malang_address','malang address'); ?>
+
+			<?php echo Form::text('malang_address',null,['class' => 'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+			<?php echo Form::label('origin_address','origin address'); ?>
+
+			<?php echo Form::text('origin_address',null,['class' => 'form-control']); ?>
+
+		</div>
+		
+		<div class="form-group">
+			<?php echo Form::submit('input',['class' => 'btn btn-primary']); ?>
+
+		</div>
+		
+		<?php echo Form::close(); ?>	
+</div>
+</body>
+</html>
+		

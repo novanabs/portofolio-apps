@@ -1,0 +1,25 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Sort and Filter</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <style>
+        body { padding-top:50px; }
+    </style>
+
+    <?php echo HTML::script('assets/js/angular.min.js'); ?>
+
+    <?php echo HTML::script('assets/js/app.js'); ?>
+
+
+</head>
+<body>
+<
+</body>
+</html>

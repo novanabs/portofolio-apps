@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="shortcut icon" href="<?php echo URL('uploads/images/p.ico'); ?>">
+  <title><?php echo $__env->yieldContent('title'); ?></title>
+  <?php echo HTML::style('assets/css/bootstrap.min.css'); ?>
+
+  <?php echo HTML::style('fonts/font-awesome.min.css'); ?>
+
+  <?php echo HTML::style('assets/css/justified-nav.css'); ?>
+
+
+  <?php echo $__env->yieldContent('css'); ?>
+</head>
+<body >
+  <div class="container">
+    <div class="col-md-12" style="background-color:#F9690E; height:350px;">
+
+    </div>
+  </div>
+  <div class="container">
+    <?php echo $__env->make('partial.headerUser', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->yieldContent('content'); ?> 
+  </div>
+  <?php echo $__env->make('partial.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+  <body>
+    <?php echo HTML::script('assets/js/jquery-2.1.4.min.js'); ?>
+
+    <?php echo HTML::script('assets/js/bootstrap.js'); ?>
+
+    <?php echo $__env->yieldContent('js'); ?>
+    </html>

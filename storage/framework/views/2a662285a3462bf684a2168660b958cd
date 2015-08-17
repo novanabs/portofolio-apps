@@ -1,0 +1,90 @@
+<?php $__env->startSection('title'); ?>
+Profile
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
+<?php echo HTML::style('assets/css/justified-nav.css'); ?>
+
+<style type="text/css">
+a:hover{
+	text-decoration: none;
+}
+img:hover
+{
+    opacity: 0.4;
+}
+
+</style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<!--====================================================  header ==================================================================-->
+  <div class="row" style="height:80px;">
+      <div class="col-md-12">
+        <a href="<?php echo route('profile.show',$user->id); ?>"><button class="btn btn-primary">Profile</button></a>
+        <?php if($url): ?>
+        <a href="<?php echo route('article.create'); ?>"><button class="btn btn-primary">Create Articles</button></a>
+        <a href="<?php echo route('user.app.create'); ?>"><button class="btn btn-primary">Upload App</button></a>
+        <a href="<?php echo route('profile.create'); ?>"><button class="btn btn-primary">Create Profile</button></a>
+        <?php endif; ?>
+
+      </div>
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+      <div class="col-md-12">
+        <div class="masthead">
+          <nav>
+            <ul class="nav nav-justified">
+              <?php if($url): ?>
+              <li><a href="#">Timeline</a></li>
+              <?php endif; ?>
+              <li><a href="<?php echo route('user.show',$user->name); ?>">Applications</a></li>
+              <li><a href="<?php echo route('user.article.index',$user->name); ?>">Article</a></li>
+              <?php if($url): ?>
+              <li><a href="#">Notification</a></li>
+              <?php endif; ?>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+<!--======================================================================================================================-->
+
+<div class="row">
+	<?php if(!$checkArticle): ?>
+	<?php foreach($article as $item): ?>
+	<div class=" col-md-4">
+		<div class="thumbnail">
+			<a href="<?php echo route('user.article.show',$item->slug); ?>"><h2 class="text-center page-header"><?php echo $item->title; ?></h2></a>
+			<div class="caption">
+				<p><?php echo str_limit($item->content,100,'.....'); ?></p>	
+				<?php foreach($item->articleCategories as $category): ?>
+				<p><b>categori: </b><?php echo $category->name; ?></p>
+				<?php endforeach; ?>
+				<?php if($url): ?>
+				<a href="<?php echo route('user.article.show',$item->slug); ?>"><button class="btn btn-primary"><i class="fa fa-eye"></i></button></a>
+				<a href="<?php echo route('user.article.edit',$item->slug); ?>"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a>
+				<?php echo Form::open(['route'=>['user.article.destroy',$item->slug],'method'=>'delete', 'class'=>'pull-left']); ?>
+
+				<?php echo Form::button('<i class="fa fa-remove"></i>', array(
+				'type' => 'submit',
+				'class'=> 'btn btn-primary',
+				'onclick'=>'return confirm("Are you sure?")'
+				));; ?>
+
+
+				<?php echo Form::close(); ?>
+
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+	<?php endforeach; ?>
+	<?php else: ?>
+	<h2>article Kosong </h2>
+
+	<?php endif; ?>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

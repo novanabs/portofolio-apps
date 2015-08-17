@@ -1,0 +1,87 @@
+<div class="form-group  <?php echo e($errors->has('photo') ? 'has-error' : ''); ?>">
+    <?php echo Form::label('photo','Photo'); ?>
+
+    <?php echo Form::file('photo',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('photo', '<span class="help-block">:message</span>'); ?>
+
+</div>
+<div class="form-group  <?php echo e($errors->has('full_name') ? 'has-error' : ''); ?>">
+	<?php echo Form::label('full_name','Full Name'); ?>
+
+	<?php echo Form::text('full_name',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('full_name', '<span class="help-block">:message</span>'); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('birthplace','Tempat Lahir'); ?>
+
+	<?php echo Form::text('birthplace',null,['class' => 'form-control']); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('birthday','Tanggal Lahir'); ?>
+
+	<?php echo Form::input('date','birthday',date('Y-m-d'),['class' => 'form-control']); ?>
+
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('domisili','Domilisi'); ?>
+
+	<?php echo Form::text('domisili',null,['class' => 'form-control']); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('gender','Gender'); ?>
+
+   	<?php echo Form::select('gender',['Laki-Laki' => 'Laki-Laki','Perempuan' => 'Perempuan'], null, ['class' => 'form-control']); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('religion','Agama'); ?>
+
+	<?php echo Form::select('religion',['Islam' => 'Islam','Kristen'=>'Kristen','Katolik'=>'Katolik','Budha'=>'Budha','Hindu'=>'Hindu'],null,['class' => 'form-control']); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('status','status'); ?>
+
+	<?php echo Form::select('status',['Belum Menikah' => 'Belum menikah','Menikah' => 'Menikah'], null, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('occupation','Pekerjaan'); ?>
+
+	<?php echo Form::text('occupation',null,['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group  <?php echo e($errors->has('phone_number') ? 'has-error' : ''); ?>">	
+	<?php echo Form::label('phone_number','No. Handphone'); ?>
+
+	<?php echo Form::text('phone_number',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('phone_number', '<span class="help-block">:message</span>'); ?>
+
+</div>
+
+<div class="form-group  <?php echo e($errors->has('email') ? 'has-error' : ''); ?>">	
+	<?php echo Form::label('email','Email'); ?>
+
+	<?php echo Form::text('email',null,['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('email', '<span class="help-block">:message</span>'); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::submit($submitButtonText,['class' => 'btn btn-primary']); ?>
+
+</div>

@@ -1,0 +1,35 @@
+<?php $__env->startSection('title'); ?> All Articles <?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="container" >
+<div class="row">
+	<div class="col-md-3" style="height:300px; background-color:white;">
+	<h3>Article Category</h3>
+     <?php foreach($ArticleCategory as $category): ?>
+    <a href="<?php echo route('ArticleCategories.show',$category->name); ?>"><h3><span class="label label-success"><?php echo $category->name; ?></span></h3></a>
+     <?php endforeach; ?>
+	</div>
+	<div class="col-md-9">
+	<div class="row">
+		<?php foreach($articles as $item): ?>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<h4 class="text-center"><a href="<?php echo route('user.article.show',$item->slug); ?>"><?php echo $item->title; ?></a></h4>
+				<hr>
+				<div class="caption">
+				<p><?php echo 'Post on '.$item->updated_at->format('Mm, Y'); ?> by <a href="<?php echo route('user.show',$item->users->name); ?>"><?php echo $item->users->name; ?></a></p>
+				<br>
+				<p><?php echo str_limit($item->content,200,'......'); ?> <a href="<?php echo route('user.article.show',$item->slug); ?>"><button class="btn">read More</button></a></p>
+				</div>
+			</div>	
+		</div>
+		<?php endforeach; ?>
+		<div class="col-md-12 text-center">
+			<?php echo $articles->render(); ?>
+
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

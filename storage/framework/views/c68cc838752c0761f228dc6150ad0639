@@ -1,0 +1,172 @@
+ 
+ <?php $__env->startSection('title'); ?> 
+  Profile <?php echo e($user->name); ?>
+
+ <?php $__env->stopSection(); ?>
+ <?php $__env->startSection('content'); ?>
+ <div class="rows">
+  <div class="col-md-12" style="height:110px;">
+    <?php if(!$bio): ?>
+    <img src="<?php echo asset('uploads/images/user.png'); ?>" style="height:105px; width:95px;">
+    <?php else: ?>
+    <img src="<?php echo asset($bio->photo); ?>" style="height:105px; width:95px;">
+    <?php endif; ?>
+  </div>
+  <div class="col-md-12" style="height:90px; background-color:#2EB8E6;">
+    <a href="<?php echo route('profile.show',$user->id); ?>"><button class="btn btn-success" style="margin:30px 0 0 13px;">
+      profile</button></a>
+      <?php if($UserSameWithUrl==1): ?>
+      <a href="<?php echo route('user.app.create',$user->id); ?>"><button class="btn btn-success" style="margin:30px 0 0 13px;">Upload App</button></a>
+        <?php if(!$bio): ?>
+        <a href="<?php echo route('profile.create',$user->id); ?>"><button class="btn btn-success" style="margin:30px 0 0 13px;">Create Profile</button></a>
+        <?php endif; ?>
+      <?php endif; ?>
+    </div>
+  </div>
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#menu1">Applications</a></li>
+    <li><a data-toggle="pill" href="#menu2">Info</a></li>
+    <?php if($UserSameWithUrl==1): ?>
+    <li><a data-toggle="pill" href="#menu3">Timeline Log</a></li>
+    <?php endif; ?>
+  </ul>
+  <?php if(Session::has('pesan')): ?>
+  <div class="alert alert-success" style="text-align:center;"><?php echo e(Session::get('pesan')); ?></div>
+  <?php endif; ?>
+  <div class="tab-content">
+    <div id="menu1" class="tab-pane fade in active">
+      <div class="col-md-12">
+        <?php if($cekAplikasi==true): ?>
+        <div class="col-md-12" style="text-align:center;height:500px;">
+          <h3> Still Empty</h3> 
+        </div>
+        <?php else: ?>
+        <?php foreach($users as $user): ?>
+        <div class="col-md-3" style="margin-top:10px;">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h4 class="panel-title"><?php echo e($user->name); ?></h4>
+            </div>
+            <div class="panel-body">
+              <img src="<?php echo asset($user->photo); ?>" style="height:150px; width:150px;">
+              <p><b>Category</b>   : <?php echo e($user->category); ?></p>
+              <p><b>platform</b>    : <?php echo e($user->platform); ?></p>
+              <p><b>Version</b>     : <?php echo e($user->version); ?></p>
+              <p><b>Email</b>       : <?php echo e($user->email); ?></p>
+              <p><b>Description</b> : <?php echo e($user->description); ?></p>
+              <a href="<?php echo asset($user->photo); ?>" download>download</a>
+              <?php if($UserSameWithUrl==1): ?>
+              <table>
+                <tr>
+                  <td><a href="<?php echo route('user.app.show',$user->id); ?>"><button class="btn btn-primary">view</button></a></td>
+                  <td><a href="<?php echo route('user.app.edit',$user->id); ?>"><button class="btn btn-success">Edit</button></a></td>
+                  <td> <?php echo Form::open(['route'=>['user.app.delete', $user->id],'method' => 'DELETE']); ?>
+
+                    <?php echo Form::submit('Delete', ['class' => 'btn btn-danger']); ?>
+
+                    <?php echo Form::close(); ?></td>
+                  </tr>
+                </table> 
+                <?php endif; ?>
+              </div>
+            </div>
+          </div>
+          <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
+      <div id="menu2" class="tab-pane fade">
+        <?php if(!$bio): ?>
+        <div class="col-md-12" style="text-align:center;">
+          <h3>Empty Profile</h3>
+        </div>
+        <?php else: ?>
+        <div class="rows">
+          <div class="col-md-4">
+            <table class="table">
+              <tr colspan=2> <h2>Contact</h2></tr>
+              <tr>
+                <td>Phone Number</td>
+                <td>: <?php echo $bio->phone_number; ?></td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>: <?php echo $bio->email; ?></td>
+              </tr>
+              <tr>
+                <td>Facebook</td>
+                <td>: </td>
+              </tr> 
+              <tr>
+                <td>Twitter</td>
+                <td>: </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-8">
+            <table class="table">
+              <tr colspan=2><h2>Full Profile</h2></tr>
+              <tr>
+                <td colspan=2>
+                  <img src="<?php echo asset($bio->photo); ?>" style="height:130px; width:110px;">
+                </td>
+              </tr>
+              <tr>
+                <td>Fullname</td>
+                <td>: <?php echo $bio->full_name; ?></td>
+              </tr>
+
+              <tr>
+                <td>TTL</td>
+                <td>: <?php echo $bio->birthplace.','.$bio->birthday; ?></td>
+              </tr>
+
+              <tr>
+                <td>Domisili</td>
+                <td>: <?php echo $bio->domisili; ?></td>
+
+              </tr>
+
+              <tr>
+                <td>Gender</td>
+                <td>: <?php echo $bio->gender; ?></td>
+
+              </tr>
+
+              <tr>
+                <td>Agama</td>
+                <td>: <?php echo $bio->religion; ?></td>
+
+              </tr>
+
+              <tr>
+                <td>Status</td>
+                <td>: <?php echo $bio->status; ?></td>
+
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>: <?php echo $bio->occupation; ?></td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+        <?php endif; ?>
+      </div>
+      <div id="menu3" class="tab-pane fade">
+        <div class="col-md-12">
+          <br>
+          <?php if($cekLog): ?>
+            <h3>masih kosong</h3>
+          <?php else: ?>
+          <?php foreach($log as $log): ?>
+            <p><?php echo e($log->created_at); ?></p>
+            <p><?php echo e($log->descriptions); ?></p>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+    <?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

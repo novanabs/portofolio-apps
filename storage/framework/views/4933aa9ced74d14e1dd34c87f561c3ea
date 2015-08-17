@@ -1,0 +1,14 @@
+<?php $__env->startSection('content'); ?>
+<div class="container">
+	<article>
+		<h2><?php echo ($app->name); ?></h2>
+		<h4><?php echo nl2br($app->description); ?></h4>
+		
+	</article>
+	
+	<?php echo link_to_route('application.index','go back to application feed');; ?>
+
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._dasboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

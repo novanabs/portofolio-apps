@@ -1,0 +1,18 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="col-md-4">
+
+</div>
+<div class="col-md-8">
+	<h2><?php echo e($app->name); ?></h2>
+	<p>Version  : <?php echo e($app->version); ?></p>
+	<p>category : <?php echo e($app->category); ?></p>
+	<p>Platform : <?php echo e($app->platform); ?></p>
+	<p>Description : </br>
+	<?php echo e($app->description); ?>
+
+	</p>
+	<p>email : <?php echo e($app->email); ?></p>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,133 @@
+
+<?php $__env->startSection('content'); ?>
+<?php if($bio): ?>
+<div class="rows">
+	<div class="col-md-4">
+		<table class="table">
+			<tr colspan=2> <h2>Contact</h2></tr>
+			<tr>
+				<td>Phone Number</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Facebook</td>
+				<td></td>
+			</tr>	
+			<tr>
+				<td>Twitter</td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-8">
+		<table class="table">
+			<tr colspan=2><h2>Full Profile</h2></tr>
+			<tr>
+				<td>FullName</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>TTL</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Domisili</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Gender</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Religion</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Status</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Occupation</td>
+				<td></td>
+			</tr>
+
+		</table>
+	</div>
+</div>
+<?php else: ?>
+<div class="rows">
+	<div class="col-md-4">
+		<table class="table">
+			<tr colspan=2> <h2>Contact</h2></tr>
+			<tr>
+				<td>Phone Number</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Facebook</td>
+				<td></td>
+			</tr>	
+			<tr>
+				<td>Twitter</td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-8">
+		<table class="table">
+			<tr colspan=2><h2>Full Profile</h2></tr>
+			<tr>
+				<td>FullName</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>TTL</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Domisili</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Gender</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Religion</td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>Status</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Occupation</td>
+				<td></td>
+			</tr>
+
+		</table>
+	</div>
+</div>
+<a href="<?php echo route('profile.create'); ?>"><h2>Create Profile</h2></a>
+
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('user._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,48 @@
+
+<?php $__env->startSection('css'); ?>
+<?php echo HTML::style('assets/datatables/jquery.datatables.css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<!---------------------------------------------------->
+<table id="articles" class="table table-striped">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Slug</th>
+      <th>Publish</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php $no = 1; ?>
+    <?php foreach($articles as $article): ?>
+    <tr>
+      <td> <?php echo $no++;?> </td>
+      <td> <?php echo e($article->title); ?> </td>
+      <td> <?php echo e(substr($article->body,0,100).'....'); ?> </td>
+      <td> <?php echo e($article->slug); ?></td>
+      <td> <?php echo e($article->published_at); ?> </td>
+      <td> <?php echo link_to_route('article_edit','Edit ',[$article->slug]); ?> | <?php echo link_to_route('article_edit',' Delete',[$article->slug]); ?> </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+
+<!---------------------------------------------------->
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+<?php echo HTML::script('assets\js\jquery.dataTables.js'); ?>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#articles').DataTable();
+} );
+
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._dasboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

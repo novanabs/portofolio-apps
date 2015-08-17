@@ -1,0 +1,118 @@
+
+<?php $__env->startSection('content'); ?>
+<div class="col-md-12">
+			<div class="row">
+				<?php echo Form::open(['route' => 'vocal.interview.store']); ?>
+
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								Input Vocal Value
+							</h2>
+						</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<?php echo Form::label('candidate_id','candidate id'); ?>
+
+								<?php echo Form::text('candidate_id',$candidate->id,['class' => 'form-control']); ?>
+
+							</div>
+							
+							<div class="form-group">
+								<?php echo Form::label('voice_type','voice type'); ?>
+
+    							<?php echo Form::select('voice_type',['Alto' => 'Alto','Bass' => 'Bass','Tenor' => 'Tenor','Sopran'=>'Sopran'], null, ['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('range','range'); ?>
+
+								<?php echo Form::text('range',null,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('hearing','hearing'); ?>
+
+								<?php echo Form::text('hearing',null,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('sight_reading','sight reading'); ?>
+
+								<?php echo Form::text('sight_reading',null,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('part_singing','part singing'); ?>
+
+								<?php echo Form::text('part_singing',null,['class' => 'form-control']); ?>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								Input Interview Value
+							</h2>
+						</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<?php echo Form::label('candidate_id','candidate id'); ?>
+
+								<?php echo Form::text('candidate_id',$candidate->id,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('leadership','leadership'); ?>
+
+								<?php echo Form::text('leadership',null,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('solidarity','solidarity'); ?>
+
+								<?php echo Form::text('solidarity',null,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('seriousness','seriousness'); ?>
+
+								<?php echo Form::text('seriousness',null,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('personality','personality'); ?>
+
+								<?php echo Form::text('personality',null,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('problem_solving','problem Solving'); ?>
+
+								<?php echo Form::text('problem_solving',null,['class' => 'form-control']); ?>
+
+							</div>
+							<div class="form-group">
+								<?php echo Form::label('finance','finance'); ?>
+
+								<?php echo Form::text('finance',null,['class' => 'form-control']); ?>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12" style="text-align:center; padding:20px;">
+					<?php echo Form::submit('input',['class' => 'btn btn-primary btn-lg']); ?>
+
+				</div>
+				<?php echo Form::close(); ?>
+
+			</div>
+		</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('CVI.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

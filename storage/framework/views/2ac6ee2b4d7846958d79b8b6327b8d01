@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="<?php echo URL('uploads/admin.ico'); ?>">
+
+  <title>Profile</title>
+
+  <?php echo HTML::style('assets\css\bootstrap.css'); ?>
+
+  <?php echo $__env->yieldContent('css'); ?>
+</head>
+<body>
+  <div class="container">
+  <div class="col-md-12" style="background-color:tomato; height:350px;">
+
+  </div>
+  </div>
+  <div class="container">
+    
+    <?php echo $__env->make('partial.headerUser', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
+    <div class="col-md-12">
+      <div class="row">
+        <?php if($users): ?>
+        <?php foreach($users as $user): ?>
+        <div class="col-md-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+            <h4 class="panel-title"><?php echo e($user->name); ?></h4>
+             </div>
+            <div class="panel-body">
+            <p> Category    : <?php echo e($user->category); ?></p>
+            <p> platform    : <?php echo e($user->platform); ?></p>
+            <p> Version     : <?php echo e($user->version); ?></p>
+            <p> Description : <?php echo e($user->description); ?></p>
+            <p> Email       : <?php echo e($user->email); ?></p>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-md-12" style="background:tomato;height:200px;">
+            <h1> Masih Kosong Nih 
+            <?php if(Auth::check()): ?>
+            <a href="#">sumbit Applikasi Pertammu</a>
+            <?php endif; ?>
+            </h1>
+          </div>
+        <?php endif; ?>
+      </div>
+    </div>
+  <?php echo $__env->make('partial.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+  </div>
+  <body>
+    <?php echo HTML::script('assets/js/jquery-2.1.4.min.js'); ?>
+
+    <?php echo HTML::script('assets/js/bootstrap.js'); ?>
+
+    <?php echo $__env->yieldContent('js'); ?>
+    </html>

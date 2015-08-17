@@ -1,0 +1,60 @@
+
+<?php $__env->startSection('css'); ?>
+<?php echo HTML::style('assets/datatables/jquery.datatables.css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<a class="btn btn-primary"href="<?php echo route('candidate.voice',''); ?>">Sopran</a>
+<a class="btn btn-warning"href="<?php echo route('candidate.voice'); ?>">Tenor</a>
+<a class="btn btn-danger"href="<?php echo route('candidate.voice','Alto'); ?>">Alto</a>
+<a class="btn btn-success"href="<?php echo route('candidate.voice','Bass'); ?>">Bass</a>
+<br><br>
+<table id="articles" class="table .table-condensed">
+	<thead>
+		<td>ID</td>
+		<td>NIM</td>
+		<td>Nama</td>
+		<td>jenis Suara</td>
+		<td>Total Vocal</td>
+		<td>Total Interview</td>
+		<td>ranking</td>
+	</thead>
+
+	<?php foreach($candidates as $candidate): ?>
+	<tr>
+		<td><?php echo $candidate->id; ?></td>
+		<td><?php echo $candidate->NIM; ?></td>
+		<td><?php echo $candidate->name; ?></td>
+		<td><?php echo $candidate->vocal->voice_type; ?></td>
+		<?php if($candidate->vocal): ?>
+		<td><?php echo $candidate->vocal->total_vocal; ?></td>
+		<?php else: ?>
+		<td>Kosong</td>
+		<?php endif; ?>
+		<?php if($candidate->interview): ?>
+		<td><?php echo $candidate->interview->total_interview; ?></td>
+		<?php else: ?>
+		<td>Kosong</td>
+		<?php endif; ?>
+		<?php if($candidate->interview && $candidate->vocal): ?>
+		<td><?php echo (0.6*$candidate->vocal->total_vocal)+(0.4*$candidate->interview->total_interview); ?></td>
+		<?php else: ?>
+		<td>Kosong</td>
+		<?php endif; ?>
+	</tr>
+	<?php endforeach; ?>
+</table>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+<?php echo HTML::script('assets\js\jquery.dataTables.js'); ?>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#articles').DataTable();
+} );
+
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('CVI.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

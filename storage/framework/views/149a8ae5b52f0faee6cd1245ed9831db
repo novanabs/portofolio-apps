@@ -1,0 +1,19 @@
+
+
+<?php $__env->startSection('content'); ?>
+	
+	<?php echo Form::model($app,['route' =>['user.app.update',$app->id], 'method' => 'PATCH']); ?>
+
+		
+		<?php echo $__env->make('partial._formApplication',['submitButtonText' =>'Update APP'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	<?php echo Form::close(); ?>	
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+<script type="text/javascript">
+			$('#tag_list').select2();
+
+</script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

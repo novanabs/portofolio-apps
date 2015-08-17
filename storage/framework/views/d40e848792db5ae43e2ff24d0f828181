@@ -1,0 +1,104 @@
+<?php $__env->startSection('title'); ?>
+Profile <?php echo $user->name; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
+<style type="text/css">
+img:hover
+{
+	opacity: 0.4;
+}
+
+</style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<!--====================================================  header ==================================================================-->
+  <div class="row" style="height:80px;">
+      <div class="col-md-12">
+        <a href="<?php echo route('profile.show',$user->id); ?>"><button class="btn btn-warning">Profile</button></a>
+        <?php if($url): ?>
+        <a href="<?php echo route('user.article.create'); ?>"><button class="btn btn-warning">Create Articles</button></a>
+        <a href="<?php echo route('user.app.create'); ?>"><button class="btn btn-warning">Upload App</button></a>
+        <a href="<?php echo route('profile.create'); ?>"><button class="btn btn-warning">Create Profile</button></a>
+        <?php endif; ?>
+
+      </div>
+    </div>
+    <div class="row" style="margin-bottom:20px;">
+      <div class="col-md-12">
+        <div class="masthead">
+          <nav>
+            <ul class="nav nav-justified">
+              <?php if($url): ?>
+              <li><a href="#">Timeline</a></li>
+              <?php endif; ?>
+              <li><a href="<?php echo route('user.show',$user->name); ?>">Applications</a></li>
+              <li><a href="<?php echo route('user.article.index',$user->name); ?>">Article</a></li>
+              <?php if($url): ?>
+              <li><a href="#">Notification</a></li>
+              <?php endif; ?>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+<!--======================================================================================================================-->
+
+
+<div class="row">
+	<div class="container">
+		<?php foreach($app as $item): ?>
+		<div class="col-md-4 col-sm-4">
+			<?php if(!$checkApp): ?>
+			<div class="thumbnail" style="background-color:wheat;">
+          <div class="bg-success text-center">
+            <img src="<?php echo asset($item->photo); ?>" style="height:220px;width:220px;margin-top:20px; margin-bottom:10px;" class="bg-success img-thumbnail img-circle">
+          </div>  
+          <div class="caption">
+            <?php foreach($item->AppCategories as $category): ?>
+              <small class="label label-warning"><a href="<?php echo route('AppCategories.show',$category->name); ?>"><?php echo $category->name; ?></a></small>
+            <?php endforeach; ?>
+            <a href="<?php echo route('user.app.show',$item->slug); ?>"><h3 class=""><?php echo $item->name; ?></h3></a>
+            <div class="bg-warning img-rounded" style="padding:10px;margin-bottom:5px;">
+              <p><?php echo str_limit($item->description,59,'.....'); ?></p>
+            </div>
+            <p><b>Platform : </b><?php echo $item->platform; ?> <i class="fa fa-<?php echo $item->platform; ?>" style="margin-left:10px;"></i></p>
+            <p><b>Develope by:</b> <a href="<?php echo url('user/'.$item->users->name); ?>"><?php echo $item->users->name; ?></a></p>
+            <p class="pull-left">
+              <?php if($item->rating_cache != 0): ?>
+                <?php for($i=0;$i<$item->rating_cache;$i++): ?>
+                  <i class="fa fa-star"></i>
+                <?php endfor; ?>
+              <?php else: ?>
+                <p>No rating</p>
+              <?php endif; ?>
+            </p>
+            <p class="pull-right"><?php echo $item->rating_count; ?> <i class="fa fa-male"></i></p>
+            <br><br>
+            <?php if($url): ?>
+				<a href="<?php echo route('user.app.edit',$item->slug); ?>"><button class="btn btn-primary">Edit</button></a>
+				<?php echo Form::open(['route'=>['user.app.destroy',$item->slug],'method'=>'delete', 'class'=>'pull-left']); ?>
+
+				<?php echo Form::submit('Delete', ['class' => 'btn btn-warning', 'onclick'=>'return confirm(\'Are you sure?\')']); ?>
+
+				<?php echo Form::close(); ?>
+
+				<?php else: ?>
+				<a class="text-center" href="<?php echo e($item->application); ?>" target="_blank"><p class=" label label-warning btn-block">Download</p></a>
+				<?php endif; ?>
+          </div>
+        </div>
+			<?php else: ?>
+			<h1>Kosong</h1>
+			<?php endif; ?>
+		</div>
+		<?php endforeach; ?>
+		<div class="col-md-12 text-center">
+		<?php echo str_replace('/?', '?', $app->render()); ?>
+
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

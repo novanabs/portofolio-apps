@@ -1,0 +1,116 @@
+<html>
+<head>
+	<title></title>
+	<?php echo HTML::style('assets/css/bootstrap.css'); ?>
+
+</head>
+<body>
+	<div class="container" style="background-color:red;padding:20px; 10px">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-primary" style="backgroundcolor:tomato;">
+					<div class="panel-heading">
+					<h2 class="panel-title">Candidate</h2>
+					</div>
+					
+					<div class="panel-body">
+						<table class="table table striped">
+							<tbody>
+							<tr>
+								<td>NIM </td>
+								<td><?php echo $candidate->NIM; ?></td>
+							</tr>
+							<tr>
+								<td>Nama</td>
+								<td><?php echo $candidate->name; ?></td>
+							</tr>
+							</tbody>
+						</table>	
+					</div>
+				</div>
+			</div>
+			<?php if($vocal): ?>
+			<div class="col-md-4">
+				<div class="panel panel-primary" style="backgroundcolor:red;">
+					<div class="panel-heading">
+						<h2 class="panel-title">Vocal</h2>
+					</div>
+					<div class="panel-body">
+						<table class="table table striped">
+							<tbody>
+							<tr>
+								<td>Range</td>
+								<td><?php echo $vocal->range; ?></td>
+							</tr>	
+							<tr>
+								<td>Hearing </td>
+								<td><?php echo $vocal->hearing; ?></td>
+							</tr>
+							<tr>
+								<td>Sight reading</td>
+								<td><?php echo $vocal->sight_reading; ?></td>
+							</tr>
+							<tr>
+								<td>Part Singing</td>
+								<td><?php echo $vocal->part_singing; ?></td>
+							</tr>
+							<tr>
+								<td>Total Vocal</td>
+								<td><?php echo $vocal->total_vocal; ?></td>
+							</tr>
+							</tbody>
+						</table>	
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+			<?php if($interview): ?>
+			<div class="col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+					<h2 class="panel-title">Interview</h2></div>
+					<div class="panel-body">
+						<table class="table table striped">
+							<tbody>
+							<tr>
+								<td>Leadership</td>
+								<td><?php echo $interview->leadership; ?></td>
+							</tr>
+							<tr>
+								<td>Solidarity</td>
+								<td><?php echo $interview->solidarity; ?></td>
+							</tr>
+							<tr>
+								<td>Seriousness</td>
+								<td><?php echo $interview->seriousness; ?></td>
+							</tr>
+							<tr>
+								<td>Personality</td>
+								<td><?php echo $interview->personality; ?></td>
+							</tr>
+							<tr>
+								<td>Problem Solving</td>
+								<td><?php echo $interview->problem_solving; ?></td>
+							</tr>
+							<tr>
+								<td>Finance</td>
+								<td><?php echo $interview->finance; ?></td>
+							</tr>
+							<tr>
+								<td>Total Interview</td>
+								<td><?php echo $interview->total_interview; ?></td>
+							</tr>			
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+		</div>
+	<div class="col-md-12" style="background-color:tomato;height:200px;">
+			<?php echo $interview->finance + $interview->problem_solving; ?>
+
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div class="footer" style="background:black; padding:30px 20px 20px 20px;">
+  <div class="container">
+    <div class="row footer-imprint">
+      <div class="col-sm-6 col-sm-push-6 text-right">
+        <a href="http://www.facebook.com/novanabs">Novan A.B.Saputra</a>
+      </div>
+      <div class="col-sm-6 col-sm-pull-6">
+        <p>&copy; 2015 Projectta.Dev - Informatic Engineering,University of Muhammadiyah Malang Portfolio Site</p>
+      </div>
+    </div>
+  </div>
+</div>

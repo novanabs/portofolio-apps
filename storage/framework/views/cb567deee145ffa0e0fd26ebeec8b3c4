@@ -1,0 +1,52 @@
+<?php $__env->startSection('css'); ?>
+<?php echo HTML::style('assets\datatables\jquery.dataTables.css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<p><?php echo link_to_route('article_create','Create New Article');; ?></p>
+<p><?php echo link_to_route('tag.create','Create New Tag');; ?></p>
+<p><?php echo link_to_route('application.create','Create New application');; ?></p>
+
+	<table id="articles" class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>tag</th>
+						<th>Title</th>
+						<th>Content</th>
+						<th>Slug</th>
+						<th>Publish</th>
+						<th colspan='3' style="color:red; text-align:center;">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $no = 1; ?>
+					<?php foreach($article as $article): ?>
+					<tr>
+						<td> <?php echo $no++;?> </td>
+						<td> 
+							<?php foreach($article->tags as $tag): ?>
+								<?php echo e($tag->name.' '); ?>
+
+							<?php endforeach; ?>
+
+						</td>	
+						<td> <?php echo e($article->title); ?> </td>
+						<td> <?php echo e(substr($article->body,0,100)); ?> </td>
+						<td> <?php echo e($article->slug); ?></td>
+						<td> <?php echo e($article->published_at); ?> </td>
+						<td><a href="<?php echo e(url('admin/article',$article->slug)); ?>" class="btn btn-primary">View</a></td>
+             			<td><a href="<?php echo e(route('article_edit',$article->slug)); ?>" class="btn btn-warning">Update</a></td> 
+						<td>
+						<?php echo Form::open(['route'=>['article_delete', $article->id],'method' => 'DELETE']); ?>
+
+  				        <?php echo Form::submit('Delete', ['class' => 'btn btn-danger']); ?>
+
+             			<?php echo Form::close(); ?></td>  
+							
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._dasboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

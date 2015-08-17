@@ -1,0 +1,17 @@
+
+
+<?php $__env->startSection('content'); ?>
+	<h2>Create New Application</h2>
+
+	<?php echo Form::open(['route' => 'application.store']); ?>
+
+
+		<?php echo $__env->make('partial._formApplication',['submitButtonText' =>'Add application'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	<?php echo Form::close(); ?>	
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('partial._dasboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
